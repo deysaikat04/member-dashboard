@@ -12,11 +12,14 @@ interface IMemberTable {
   data: IMember[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   columns: ColumnDef<IMember, any>[];
+  handleMemberSelect:  (member: IMember) => void
+
 }
 
 const MemberTable = ({
   data,
   columns,
+  handleMemberSelect
 }: IMemberTable) => {
 
   const tanstackTable = useReactTable({
@@ -45,11 +48,12 @@ const MemberTable = ({
         </thead>
         <tbody>
           {tanstackTable.getRowModel()?.rows.map((row) => {
+            
             return (
               <tr key={row.id} className="px-4">
                 {row.getVisibleCells()?.map((cell) => {
                   return (
-                    <td key={cell.id}>
+                    <td key={cell.id} onClick={() => handleMemberSelect(row.original)}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

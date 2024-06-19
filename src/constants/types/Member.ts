@@ -47,3 +47,9 @@ export interface ITierDetails {
     points:       number;
     period_end:   string;
 }
+
+export interface IMemberDetailsProps {
+    member: IMember;
+    open: boolean;
+    setSheetOpen: React.Dispatch<React.SetStateAction<boolean>>
+}

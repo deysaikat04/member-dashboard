@@ -5,23 +5,22 @@ import {
 } from "@/components/ui/pagination";
 import { MEMBER_TABLE_PAGE_LIMIT as limit } from "@/constants";
 import { ChevronRight, ChevronsLeft } from "lucide-react";
-import { useState } from "react";
 interface PaginationProp {
   totalCount: number;
-  onPageChange: () => void;
+  currentPage: number;
+  onPageChange:  React.Dispatch<React.SetStateAction<number>>;
   stepsBeforeAfterCount?: number;
   customClass?: string;
 }
 
 export const MemberPagination = ({
   totalCount,
+  currentPage,
   onPageChange,
   stepsBeforeAfterCount = 2,
 }: PaginationProp) => {
   const itemsPerPage = limit;
   const totalPages = Math.ceil(totalCount / itemsPerPage);
-  const [currentPage, setCurrentPage] = useState(1);
-
   const startPage = Math.max(1, currentPage - stepsBeforeAfterCount);
   const endPage = Math.min(totalPages, currentPage + stepsBeforeAfterCount);
   const noOfPage = Math.ceil(totalCount / limit);
@@ -51,11 +50,8 @@ export const MemberPagination = ({
 
   const handlePageNumberClick = (pageNumber: string | number) => {
     typeof pageNumber === "string"
-      ? setCurrentPage(parseInt(pageNumber))
-      : setCurrentPage(pageNumber);
-    onPageChange();
-    console.log("pageNumber",pageNumber);
-    
+      ? onPageChange(parseInt(pageNumber)-1)
+      : onPageChange(pageNumber-1);
   };
 
   const renderPagination = () => {

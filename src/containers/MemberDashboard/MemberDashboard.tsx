@@ -6,19 +6,10 @@ import { useState } from "react";
 
 
 const MemberDashboard = () => {
-  const [pageStartIndex, setPageStartIndex] = useState(0);
-
-  const { data: membersData, isLoading, refetch } = useMembers(pageStartIndex);
-
-  const handlePagination = () => {
-    console.log("here", membersData?.data.next_start_index);
-    
-    if(membersData?.data.next_start_index) {
-      setPageStartIndex(membersData.data.next_start_index);
-      refetch()
-    }
-  };
   
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const { data: membersData, isLoading } = useMembers(currentPage);
 
   return (
     <div className="text-center">
@@ -33,7 +24,7 @@ const MemberDashboard = () => {
             columns,
           }}
         />
-        <MemberPagination totalCount={membersData.data.total_loyalty_users} onPageChange={handlePagination}/>
+        <MemberPagination totalCount={membersData.data.total_loyalty_users} currentPage={currentPage} onPageChange={setCurrentPage}/>
         </>
       ) : null}
 

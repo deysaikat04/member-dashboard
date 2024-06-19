@@ -5,10 +5,12 @@ import {
   flexRender,
   ColumnDef,
 } from "@tanstack/react-table";
+import { ReactNode } from "react";
 
 
 interface IMemberTable {
   data: IMember[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   columns: ColumnDef<IMember, any>[];
 }
 
@@ -34,7 +36,7 @@ const MemberTable = ({
               {headerGroup.headers.map((header) => {
                 return (
                   <th key={header.id} colSpan={header.colSpan} className="px-4">
-                    {header.column.columnDef.header}
+                    {header.column.columnDef.header as ReactNode}
                   </th>
                 );
               })}

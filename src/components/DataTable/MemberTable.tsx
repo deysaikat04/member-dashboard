@@ -1,43 +1,27 @@
+import { IMember } from "@/constants/types/Member";
 import {
   useReactTable,
   getCoreRowModel,
-  getFilteredRowModel,
   flexRender,
-  PaginationState,
   ColumnDef,
-  getPaginationRowModel,
 } from "@tanstack/react-table";
-import { SetStateAction } from "react";
-import { IMember } from "../../constants/types/Member";
+
 
 interface IMemberTable {
   data: IMember[];
   columns: ColumnDef<IMember, any>[];
-  pagination: PaginationState;
-  total_pages: number;
-  setPagination: React.Dispatch<SetStateAction<PaginationState>>;
 }
 
 const MemberTable = ({
   data,
   columns,
-  pagination,
-  total_pages,
-  setPagination,
 }: IMemberTable) => {
-  console.log(pagination);
 
   const tanstackTable = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    pageCount: total_pages,
-    getPaginationRowModel: getPaginationRowModel(),
-    state: {
-      pagination,
-    },
-    onPaginationChange: setPagination,
+    manualPagination: true,
     debugTable: true,
   });
 
@@ -76,41 +60,51 @@ const MemberTable = ({
           })}
         </tbody>
       </table>
-      <div className="h-2" />
-      <div className="flex flex-row justify-center">
-        <button
-          onClick={() => tanstackTable.setPageIndex(0)}
-          disabled={!tanstackTable.getCanPreviousPage()}
-        >
-          {"<<"}
-        </button>
-        <button
-          onClick={() => tanstackTable.previousPage()}
-          disabled={!tanstackTable.getCanPreviousPage()}
-        >
-          {"<"}
-        </button>
-        <div className="pagination-text">
-          {tanstackTable.getState().pagination.pageIndex + 1} of{" "}
-          {tanstackTable.getPageCount()}
-        </div>
-        <button
-          onClick={() => tanstackTable.nextPage()}
-          disabled={!tanstackTable.getCanNextPage()}
-        >
-          {">"}
-        </button>
-        <button
-          onClick={() =>
-            tanstackTable.setPageIndex(tanstackTable.getPageCount() - 1)
-          }
-          disabled={!tanstackTable.getCanNextPage()}
-        >
-          {">>"}
-        </button>
-      </div>
     </div>
   );
 };
+
+// export function DialogDemo() {
+//   return (
+//     <Dialog>
+//       <DialogTrigger asChild>
+//         <Button variant="outline">Edit Profile</Button>
+//       </DialogTrigger>
+//       <DialogContent className="sm:max-w-[425px]">
+//         <DialogHeader>
+//           <DialogTitle>Edit profile</DialogTitle>
+//           <DialogDescription>
+//             Make changes to your profile here. Click save when you're done.
+//           </DialogDescription>
+//         </DialogHeader>
+//         <div className="grid gap-4 py-4">
+//           <div className="grid grid-cols-4 items-center gap-4">
+//             <Label htmlFor="name" className="text-right">
+//               Name
+//             </Label>
+//             <Input
+//               id="name"
+//               defaultValue="Pedro Duarte"
+//               className="col-span-3"
+//             />
+//           </div>
+//           <div className="grid grid-cols-4 items-center gap-4">
+//             <Label htmlFor="username" className="text-right">
+//               Username
+//             </Label>
+//             <Input
+//               id="username"
+//               defaultValue="@peduarte"
+//               className="col-span-3"
+//             />
+//           </div>
+//         </div>
+//         <DialogFooter>
+//           <Button type="submit">Save changes</Button>
+//         </DialogFooter>
+//       </DialogContent>
+//     </Dialog>
+//   )
+// }
 
 export default MemberTable;

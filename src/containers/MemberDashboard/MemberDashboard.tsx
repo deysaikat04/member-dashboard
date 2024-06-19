@@ -1,42 +1,43 @@
-import { useMemo, useState } from "react";
-// TODO: remove mock data
-import data from "./data.json";
-import { ColumnDef, PaginationState } from "@tanstack/react-table";
-import { MEMBER_TABLE_COLUMN_NAMES } from "../../constants";
-import { IMember } from "../../constants/types/Member";
-import MemberTable from "../../components/DataTable/MemberTable";
+import useMembers from "@/hooks/useMembers";
+import MemberTable from "@/components/DataTable/MemberTable";
+import {  columns } from "@/constants";
+import { MemberPagination } from "@/components/Pagination/MemberPagination";
+import { useState } from "react";
+
 
 const MemberDashboard = () => {
-  const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: 10,
-  });
+  const [pageStartIndex, setPageStartIndex] = useState(0);
 
-  const generateColumnsForTable = (): ColumnDef<IMember, any>[] =>
-    MEMBER_TABLE_COLUMN_NAMES.map((name) => {
-      return {
-        accessorKey: name,
-        header:
-          name.replace(/_/g, " ").charAt(0).toUpperCase() +
-          name.replace(/_/g, " ").slice(1),
-        cell: (cellContext) => cellContext.getValue(),
-      };
-    });
+  const { data: membersData, isLoading, refetch } = useMembers(pageStartIndex);
 
-  const columns = useMemo(() => generateColumnsForTable(), []);
+  const handlePagination = () => {
+    console.log("here", membersData?.data.next_start_index);
+    
+    if(membersData?.data.next_start_index) {
+      setPageStartIndex(membersData.data.next_start_index);
+      refetch()
+    }
+  };
+  
 
   return (
     <div className="text-center">
       <h4>MemberDashboard</h4>
-      <MemberTable
-        {...{
-          data: data.data.loyalty_users,
-          columns,
-          pagination,
-          total_pages: 10,
-          setPagination,
-        }}
-      />
+      {isLoading ? (
+        <h3>Loading ... </h3>
+      ) : membersData?.data?.loyalty_users ? (
+        <>
+        <MemberTable
+          {...{
+            data: membersData.data.loyalty_users,
+            columns,
+          }}
+        />
+        <MemberPagination totalCount={membersData.data.total_loyalty_users} onPageChange={handlePagination}/>
+        </>
+      ) : null}
+
+      
     </div>
   );
 };

@@ -16,9 +16,9 @@ Build : `npm run build`
 
 - [X] Setup the base structure
 - [X] Set up the Home page
-- [ ] Set up the API wrapper (use React query)
-- [ ] Integrate the API with Home page
-- [ ] Make the Home page dynamic, eg. pagination
+- [X] Set up the API wrapper (use React query)
+- [X] Integrate the API with Home page
+- [X] Make the Home page dynamic, eg. pagination
 - [ ] Create popup for user details
 - [ ] Integrate the popup
 - [ ] Handle responsiveness

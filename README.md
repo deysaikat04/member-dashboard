@@ -1,6 +1,6 @@
 # User Dashboard
 
-# Project Overview:
+## Project Overview:
 This project is a dashboard application designed to display member details who are enrolled in the platform. The application supports following features:
 
 1. **Members List**:
@@ -19,7 +19,7 @@ This project is a dashboard application designed to display member details who a
     - Provides a custom error page.
 
 
-# Project Screenshots:
+## Project Screenshots:
 
 ![List page 1](/src/assets/screenshots/table.png)
 
@@ -32,11 +32,11 @@ This project is a dashboard application designed to display member details who a
 ![Mobile page 2](/src/assets/screenshots/mobile2.png)
 
 
-## Code Overview
+### Code Overview
 
 The project is bootstrapped with Vite React App, written in TypeScript. Below is an overview of the key components and libraries used:
     
-### Libraries Used:
+#### Libraries Used:
 
 1. **React:** For building the user interface.
 2. **TypeScript:** For adding static types to JavaScript.
@@ -46,7 +46,7 @@ The project is bootstrapped with Vite React App, written in TypeScript. Below is
 5. **shadcn/ui:** For UI components.
 
 
-### Folder structure
+#### Folder structure
 
 ```plaintext
 ├── src
@@ -89,14 +89,14 @@ The project is bootstrapped with Vite React App, written in TypeScript. Below is
 │   ├── vite-env.d.ts
 ```
 
-## How to run
+### How to run
 
 Run : `npm run dev`
 
 Build : `npm run build`
 
 
-## Project checklist
+### Project checklist
 
 - [X] Setup the base structure
 - [X] Set up the Home page
@@ -106,10 +106,10 @@ Build : `npm run build`
 - [X] Create popup for user details
 - [X] Integrate the popup
 - [X] Handle responsiveness
-- [ ] Test cases
+- [X] Test cases
 
 
-## Next steps
+### Next steps
 
 - Add filter, sorting options in table
 - Add custom limit for the table

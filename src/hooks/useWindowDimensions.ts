@@ -9,9 +9,6 @@ function getWindowDimensions() {
   let isSmallTablet = false;
   let isLargeTablet = false;
 
-  console.log(width);
-  
-
   // for mobile
   if (width <= 500) isMobile = true;
 

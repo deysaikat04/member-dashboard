@@ -21,7 +21,7 @@ export const MEMBER_PROFILE_DETAILS_SHEET_ROWS = [
   "loyalty_tier_name",
   "redeemed_points",
   "awarded_points",
-];
+] as (keyof IMember)[];
 
 const columnHelper = createColumnHelper<IMember>();
 export const columns = [

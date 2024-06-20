@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import { IMemberDetailsProps } from "@/constants/types/Member";
 import { MEMBER_PROFILE_DETAILS_SHEET_ROWS } from "@/constants";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
@@ -36,7 +37,7 @@ const MemberDetails = ({ member, open, setSheetOpen }: IMemberDetailsProps) => {
       } else if (row.includes("address")) {
         return (
           <>
-            <div className="grid grid-cols-4  gap-4" key={row}>
+            <div className="grid grid-cols-4 gap-4" key={row}>
               <Label htmlFor="name" className="text-right leading-5">
                 Address
               </Label>
@@ -67,7 +68,7 @@ const MemberDetails = ({ member, open, setSheetOpen }: IMemberDetailsProps) => {
                 htmlFor="name"
                 className="text-left col-span-3 font-normal leading-5"
               >
-                {member[row]}
+                {member[row] as ReactNode}
               </Label>
             </div>
             <hr />
@@ -86,7 +87,7 @@ const MemberDetails = ({ member, open, setSheetOpen }: IMemberDetailsProps) => {
           setSheetOpen(false);
         }}
       >
-        <SheetContent side={isMobile ? "bottom" : "right"} className="">
+        <SheetContent side={isMobile ? "bottom" : "right"} className="md:min-w-[600px] ">
           <SheetHeader>
             <SheetTitle>Member Profile</SheetTitle>
             <SheetDescription>Find the member profile below.</SheetDescription>

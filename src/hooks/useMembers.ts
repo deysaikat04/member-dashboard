@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import apiService from "../lib/apiService";
-import { IGetAllUserApiResponse } from "@constants/types/Member";
-import { MEMBER_TABLE_PAGE_LIMIT as limit} from "@constants/member";
+import { IGetAllUserApiResponse } from "@/constants/types/Member";
+import { MEMBER_TABLE_PAGE_LIMIT as limit} from "@/constants/member";
 
 const useMembers = (
   startIndex: number,

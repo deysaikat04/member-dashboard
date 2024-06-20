@@ -5,7 +5,7 @@ import {
   flexRender,
   ColumnDef,
 } from "@tanstack/react-table";
-import { IMember } from "@constants/types/Member";
+import { IMember } from "@/constants/types/Member";
 
 interface IMemberTable {
   data: IMember[];

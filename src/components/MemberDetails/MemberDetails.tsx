@@ -8,8 +8,8 @@ import {
   SheetHeader,
   SheetTitle,
 } from "../ui/sheet";
-import { MEMBER_PROFILE_DETAILS_SHEET_ROWS } from "@constants/member";
-import { IMemberDetailsProps } from "@constants/types/Member";
+import { MEMBER_PROFILE_DETAILS_SHEET_ROWS } from "@/constants/member";
+import { IMemberDetailsProps } from "@/constants/types/Member";
 
 const MemberDetails = ({ member, open, setSheetOpen }: IMemberDetailsProps) => {
   const { isMobile } = useWindowDimensions();

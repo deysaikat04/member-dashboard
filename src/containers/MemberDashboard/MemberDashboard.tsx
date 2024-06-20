@@ -8,7 +8,7 @@ import { IMember } from "@/constants/types/Member";
 import { columns } from "@/constants/member";
 
 const MemberDashboard = () => {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [selectedUser, setSelectedUser] = useState<IMember>();
   const [sheetOpen, setSheetOpen] = useState(false);
 
@@ -27,7 +27,9 @@ const MemberDashboard = () => {
           {isLoading ? (
             <MemberTableSkeleton />
           ) : isError ? (
-            <p className="text-red-600">Error while fetching member details. Try again later.</p>
+            <p className="text-red-600">
+              Error while fetching member details. Try again later.
+            </p>
           ) : membersData?.data?.loyalty_users ? (
             <>
               <MemberTable
@@ -43,7 +45,9 @@ const MemberDashboard = () => {
                 onPageChange={setCurrentPage}
               />
             </>
-          ) : <p>Something went wrong. Try again later.</p>}
+          ) : (
+            <p>Something went wrong. Try again later.</p>
+          )}
         </div>
       </div>
 

@@ -9,7 +9,7 @@ export const MEMBER_TABLE_COLUMN_NAMES = [
   "loyalty_enroll_time",
 ];
 
-export const MEMBER_TABLE_PAGE_LIMIT = 100;
+export const MEMBER_TABLE_PAGE_LIMIT = 50;
 
 export const MEMBER_PROFILE_DETAILS_SHEET_ROWS = [
   "first_name",

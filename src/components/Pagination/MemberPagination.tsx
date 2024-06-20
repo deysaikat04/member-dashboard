@@ -4,7 +4,7 @@ import {
   PaginationContent,
   PaginationLink,
 } from "@/components/ui/pagination";
-import { MEMBER_TABLE_PAGE_LIMIT  as limit} from "@/constants/member";
+import { MEMBER_TABLE_PAGE_LIMIT as limit } from "@/constants/member";
 
 interface PaginationProp {
   totalCount: number;
@@ -51,8 +51,8 @@ const MemberPagination = ({
 
   const handlePageNumberClick = (pageNumber: string | number) => {
     typeof pageNumber === "string"
-      ? onPageChange(parseInt(pageNumber) - 1)
-      : onPageChange(pageNumber - 1);
+      ? onPageChange(parseInt(pageNumber))
+      : onPageChange(pageNumber);
   };
 
   const renderPagination = () => {
@@ -61,7 +61,12 @@ const MemberPagination = ({
     return (
       <>
         <Pagination className="my-4">
-          {currentPage > 0 && <ChevronLeft />}
+          {currentPage > 1 && (
+            <ChevronLeft
+              className="h-7 w-7 border rounded  ml-2 cursor-pointer hover:bg-slate-200"
+              onClick={() => handlePageNumberClick(currentPage - 1)}
+            />
+          )}
           {pageNumbers.map((pageNumber, index) => (
             <PaginationContent
               key={index}
@@ -71,10 +76,10 @@ const MemberPagination = ({
                 pageNumber
               ) : (
                 <PaginationLink
-                  isActive={currentPage + 1 === pageNumber}
+                  isActive={currentPage === pageNumber}
                   onClick={() => handlePageNumberClick(pageNumber)}
                   className={`h-7 w-9 p-0  mx-1 cursor-pointer ${
-                    currentPage + 1 === pageNumber
+                    currentPage === pageNumber
                       ? "bg-gray-700 text-white p-2"
                       : ""
                   }`}
@@ -84,7 +89,12 @@ const MemberPagination = ({
               )}
             </PaginationContent>
           ))}
-          {endPage < noOfPage ? <ChevronRight className="" /> : null}
+          {endPage < noOfPage ? (
+            <ChevronRight
+              className="h-7 w-7 border rounded  ml-2 cursor-pointer hover:bg-slate-200"
+              onClick={() => handlePageNumberClick(currentPage + 1)}
+            />
+          ) : null}
         </Pagination>
       </>
     );

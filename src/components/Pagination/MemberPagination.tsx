@@ -4,7 +4,7 @@ import {
   PaginationContent,
   PaginationLink,
 } from "@/components/ui/pagination";
-import { MEMBER_TABLE_PAGE_LIMIT as limit } from "@/constants";
+import { MEMBER_TABLE_PAGE_LIMIT  as limit} from "@constants/member";
 
 interface PaginationProp {
   totalCount: number;

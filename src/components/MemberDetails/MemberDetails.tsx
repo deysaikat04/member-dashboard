@@ -1,6 +1,4 @@
 import { ReactNode } from "react";
-import { IMemberDetailsProps } from "@/constants/types/Member";
-import { MEMBER_PROFILE_DETAILS_SHEET_ROWS } from "@/constants";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { Label } from "../ui/label";
 import {
@@ -10,6 +8,8 @@ import {
   SheetHeader,
   SheetTitle,
 } from "../ui/sheet";
+import { MEMBER_PROFILE_DETAILS_SHEET_ROWS } from "@constants/member";
+import { IMemberDetailsProps } from "@constants/types/Member";
 
 const MemberDetails = ({ member, open, setSheetOpen }: IMemberDetailsProps) => {
   const { isMobile } = useWindowDimensions();
@@ -79,7 +79,7 @@ const MemberDetails = ({ member, open, setSheetOpen }: IMemberDetailsProps) => {
   };
 
   return (
-    <div className="grid grid-cols-4 gap-2">
+    <div className="grid grid-cols-4 gap-2" aria-label="sheet-grid">
       <Sheet
         key={isMobile ? "bottom" : "right"}
         open={open}

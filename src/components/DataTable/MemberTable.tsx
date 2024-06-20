@@ -5,7 +5,7 @@ import {
   flexRender,
   ColumnDef,
 } from "@tanstack/react-table";
-import { IMember } from "@/constants/types/Member";
+import { IMember } from "@constants/types/Member";
 
 interface IMemberTable {
   data: IMember[];
@@ -30,7 +30,7 @@ const MemberTable = ({
 
   return (
     <div className="justify-center flex flex-col md:mx-20 md:my-10">
-      <table className="border">
+      <table className="border" aria-label="member-table" >
         <thead className="bg-gray-700 text-white h-10">
           {tanstackTable.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>

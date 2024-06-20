@@ -19,7 +19,7 @@ const MemberDetails = ({ member, open, setSheetOpen }: IMemberDetailsProps) => {
       if (row.includes("name")) {
         return (
           <div key={row}>
-            <div className="grid grid-cols-4  gap-4 mb-4">
+            <div className="grid grid-cols-4 gap-4 mb-4">
               <Label htmlFor="name" className="text-right leading-5">
                 {row.replace(/_/g, " ").charAt(0).toUpperCase() +
                   row.replace(/_/g, " ").slice(1)}

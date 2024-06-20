@@ -1,4 +1,4 @@
-# User Dashboard
+# Member Dashboard
 
 ## Project Overview:
 This project is a dashboard application designed to display member details who are enrolled in the platform. The application supports following features:

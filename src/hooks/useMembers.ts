@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import apiService from "../utils/apiService";
+import apiService from "../lib/apiService";
 import { IGetAllUserApiResponse } from "@/constants/types/Member";
 import { MEMBER_TABLE_PAGE_LIMIT as limit } from "@/constants";
 

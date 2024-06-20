@@ -31,7 +31,6 @@ This project is a dashboard application designed to display member details who a
 
 ![Mobile page 2](/src/assets/screenshots/mobile2.png)
 
-![Error page](/src/assets/screenshots/error.png)
 
 ## Code Overview
 

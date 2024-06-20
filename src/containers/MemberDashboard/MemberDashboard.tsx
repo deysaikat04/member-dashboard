@@ -4,8 +4,8 @@ import MemberTable from "@/components/DataTable/MemberTable";
 import MemberPagination from "@/components/Pagination/MemberPagination";
 import MemberDetails from "@/components/MemberDetails/MemberDetails";
 import MemberTableSkeleton from "@/components/Skeleton/MemberTableSkeleton";
-import { IMember } from "@/constants/types/Member";
-import { columns } from "@/constants";
+import { IMember } from "@constants/types/Member";
+import { columns } from "@constants/member";
 
 const MemberDashboard = () => {
   const [currentPage, setCurrentPage] = useState(0);

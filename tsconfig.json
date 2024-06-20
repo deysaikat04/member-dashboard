@@ -22,11 +22,11 @@
     "noFallthroughCasesInSwitch": true,
 
     "paths": {
-      "@/*": [
+      "@*": [
         "./src/*"
       ]
     }
   },
-  "include": ["src"],
+  "include": ["src", "./jest.setup.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

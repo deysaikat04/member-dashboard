@@ -1,4 +1,6 @@
 import { IMemberDetailsProps } from "@/constants/types/Member";
+import { MEMBER_PROFILE_DETAILS_SHEET_ROWS } from "@/constants";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { Label } from "../ui/label";
 import {
   Sheet,
@@ -7,12 +9,9 @@ import {
   SheetHeader,
   SheetTitle,
 } from "../ui/sheet";
-import { MEMBER_PROFILE_DETAILS_SHEET_ROWS } from "@/constants";
-import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 const MemberDetails = ({ member, open, setSheetOpen }: IMemberDetailsProps) => {
-
-    const {isMobile} = useWindowDimensions();
+  const { isMobile } = useWindowDimensions();
 
   const renderDetailsJsx = () => {
     return MEMBER_PROFILE_DETAILS_SHEET_ROWS.map((row) => {
@@ -81,18 +80,16 @@ const MemberDetails = ({ member, open, setSheetOpen }: IMemberDetailsProps) => {
   return (
     <div className="grid grid-cols-4 gap-2">
       <Sheet
-        key={isMobile ? "bottom": "right"}
+        key={isMobile ? "bottom" : "right"}
         open={open}
         onOpenChange={() => {
           setSheetOpen(false);
         }}
       >
-        <SheetContent side={isMobile ? "bottom": "right"} className="">
+        <SheetContent side={isMobile ? "bottom" : "right"} className="">
           <SheetHeader>
-            <SheetTitle>Member details</SheetTitle>
-            <SheetDescription>
-              Please find the member details below:
-            </SheetDescription>
+            <SheetTitle>Member Profile</SheetTitle>
+            <SheetDescription>Find the member profile below.</SheetDescription>
           </SheetHeader>
           <div className="grid gap-4 py-4">{renderDetailsJsx()}</div>
         </SheetContent>

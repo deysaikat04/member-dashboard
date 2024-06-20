@@ -1,19 +1,17 @@
-import { IMember } from "@/constants/types/Member";
+import { ReactNode } from "react";
 import {
   useReactTable,
   getCoreRowModel,
   flexRender,
   ColumnDef,
 } from "@tanstack/react-table";
-import { ReactNode } from "react";
-
+import { IMember } from "@/constants/types/Member";
 
 interface IMemberTable {
   data: IMember[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   columns: ColumnDef<IMember, any>[];
   handleMemberSelect:  (member: IMember) => void
-
 }
 
 const MemberTable = ({
@@ -33,7 +31,7 @@ const MemberTable = ({
   return (
     <div className="justify-center flex flex-col md:mx-20 md:my-10">
       <table className="border">
-        <thead className="bg-gray-700 text-white h-10 ">
+        <thead className="bg-gray-700 text-white h-10">
           {tanstackTable.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
@@ -48,7 +46,6 @@ const MemberTable = ({
         </thead>
         <tbody>
           {tanstackTable.getRowModel()?.rows.map((row) => {
-            
             return (
               <tr key={row.id} className="px-4 h-12 border even:bg-gray-100 odd:bg-white cursor-pointer  hover:bg-gray-200">
                 {row.getVisibleCells()?.map((cell) => {

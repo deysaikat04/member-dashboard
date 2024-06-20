@@ -32,8 +32,8 @@ const MemberTable = ({
 
   return (
     <div className="justify-center flex flex-col md:mx-20 md:my-10">
-      <table className="border p-4">
-        <thead>
+      <table className="border">
+        <thead className="bg-gray-700 text-white h-10 ">
           {tanstackTable.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => {
@@ -50,7 +50,7 @@ const MemberTable = ({
           {tanstackTable.getRowModel()?.rows.map((row) => {
             
             return (
-              <tr key={row.id} className="px-4">
+              <tr key={row.id} className="px-4 h-12 border even:bg-gray-100 odd:bg-white cursor-pointer  hover:bg-gray-200">
                 {row.getVisibleCells()?.map((cell) => {
                   return (
                     <td key={cell.id} onClick={() => handleMemberSelect(row.original)}>

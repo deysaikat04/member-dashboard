@@ -20,8 +20,11 @@ const MemberDashboard = () => {
 
   return (
     <div className="text-center">
-      <h4>MemberDashboard</h4>
-      {isLoading ? (
+      <h4 className="text-2xl font-semibold">Member Dashboard</h4>
+
+      <div className="grid grid-cols-12 gap-4">
+        <div className="m-4 col-span-12 md:col-start-2 md:col-span-10 overflow-x-auto">
+        {isLoading ? (
         <h3>Loading ... </h3>
       ) : membersData?.data?.loyalty_users ? (
         <>
@@ -39,6 +42,9 @@ const MemberDashboard = () => {
           />
         </>
       ) : null}
+        </div>
+      </div>
+      
 
       {selectedUser ? (
         <MemberDetails

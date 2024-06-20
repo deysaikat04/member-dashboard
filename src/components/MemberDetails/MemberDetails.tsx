@@ -8,8 +8,11 @@ import {
   SheetTitle,
 } from "../ui/sheet";
 import { MEMBER_PROFILE_DETAILS_SHEET_ROWS } from "@/constants";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 const MemberDetails = ({ member, open, setSheetOpen }: IMemberDetailsProps) => {
+
+    const {isMobile} = useWindowDimensions();
 
   const renderDetailsJsx = () => {
     return MEMBER_PROFILE_DETAILS_SHEET_ROWS.map((row) => {
@@ -78,13 +81,13 @@ const MemberDetails = ({ member, open, setSheetOpen }: IMemberDetailsProps) => {
   return (
     <div className="grid grid-cols-4 gap-2">
       <Sheet
-        key={"right"}
+        key={isMobile ? "bottom": "right"}
         open={open}
         onOpenChange={() => {
           setSheetOpen(false);
         }}
       >
-        <SheetContent side={"right"} className="">
+        <SheetContent side={isMobile ? "bottom": "right"} className="">
           <SheetHeader>
             <SheetTitle>Member details</SheetTitle>
             <SheetDescription>

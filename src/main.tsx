@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { QueryClientProvider, QueryClient } from "react-query";
 import App from "./App.tsx";
 import "./index.css";
-import { QueryClientProvider, QueryClient } from "react-query";
 import { ErrorBoundary } from "./components/ErrorBoundary/ErrorBoundary.tsx";
 
 const queryClient = new QueryClient({

@@ -1,19 +1,20 @@
+import { ChevronRight, ChevronLeft } from "lucide-react";
 import {
   Pagination,
   PaginationContent,
   PaginationLink,
 } from "@/components/ui/pagination";
 import { MEMBER_TABLE_PAGE_LIMIT as limit } from "@/constants";
-import { ChevronRight, ChevronsLeft } from "lucide-react";
+
 interface PaginationProp {
   totalCount: number;
   currentPage: number;
-  onPageChange:  React.Dispatch<React.SetStateAction<number>>;
+  onPageChange: React.Dispatch<React.SetStateAction<number>>;
   stepsBeforeAfterCount?: number;
   customClass?: string;
 }
 
-export const MemberPagination = ({
+const MemberPagination = ({
   totalCount,
   currentPage,
   onPageChange,
@@ -50,8 +51,8 @@ export const MemberPagination = ({
 
   const handlePageNumberClick = (pageNumber: string | number) => {
     typeof pageNumber === "string"
-      ? onPageChange(parseInt(pageNumber)-1)
-      : onPageChange(pageNumber-1);
+      ? onPageChange(parseInt(pageNumber) - 1)
+      : onPageChange(pageNumber - 1);
   };
 
   const renderPagination = () => {
@@ -59,8 +60,8 @@ export const MemberPagination = ({
 
     return (
       <>
-        <Pagination>
-          {currentPage > 1 && <ChevronsLeft />}
+        <Pagination className="my-4">
+          {currentPage > 0 && <ChevronLeft />}
           {pageNumbers.map((pageNumber, index) => (
             <PaginationContent
               key={index}
@@ -70,16 +71,20 @@ export const MemberPagination = ({
                 pageNumber
               ) : (
                 <PaginationLink
-                  isActive={currentPage === pageNumber}
+                  isActive={currentPage + 1 === pageNumber}
                   onClick={() => handlePageNumberClick(pageNumber)}
-                  className="h-7 w-9 p-0"
+                  className={`h-7 w-9 p-0  mx-1 cursor-pointer ${
+                    currentPage + 1 === pageNumber
+                      ? "bg-gray-700 text-white p-2"
+                      : ""
+                  }`}
                 >
                   {pageNumber}
                 </PaginationLink>
               )}
             </PaginationContent>
           ))}
-          {endPage < noOfPage ? <ChevronRight /> : null}
+          {endPage < noOfPage ? <ChevronRight className="" /> : null}
         </Pagination>
       </>
     );
@@ -87,3 +92,5 @@ export const MemberPagination = ({
 
   return <div>{renderPagination()}</div>;
 };
+
+export default MemberPagination;

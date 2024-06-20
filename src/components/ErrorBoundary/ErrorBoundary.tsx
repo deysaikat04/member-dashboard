@@ -28,8 +28,11 @@ export class ErrorBoundary extends React.Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <div>
-          <h1>Sorry.. there was an error</h1>;{JSON.stringify(this.state.error)}
+        <div className="flex flex-col justify-center w-[80%] m-auto h-screen ">
+          <h1 className="p-4 rounded bg-slate-800 text-white">ERROR!</h1>
+          <div className="p-4 bg-slate-100 text-red-500 max-h-[400px] overflow-y-scroll">
+            {JSON.stringify(this.state.error)}
+          </div>
         </div>
       );
     }

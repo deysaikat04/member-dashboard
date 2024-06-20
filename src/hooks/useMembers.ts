@@ -12,7 +12,9 @@ const useMembers = (
         `/v1/loyalty/users?count=${limit}&start_index=${startIndex * limit}`
       )
       .then((res) => res.data)
-      .catch((error) => console.error(error))
+      .catch((error) => {
+        throw new Error(error)
+      })
   );
 }
 
